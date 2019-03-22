@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+<div style="height: 30px"></div>
+<div class="col-sm-12">
+    <h2 style="text-align: center">Categories of products</h2>
+</div>
+<div class="col sm-4" *ngIf="authentication.roleMatch(['Admin'])">
+    <button type="button" class="btn btn-info" routerLink='/create-categories'routerLinkActive="active">Create categories</button>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-4  col-xs-6" *ngFor="let categories of categoriesList" style="padding: 15px; " [routerLink]="['/categories-details', categories.Id]" >
+    <table class="table table-secondary ">
+      <tr>
+        <td  id="divRelative" >
+           <h3 style="text-align:center;"> {{categories.Name}}</h3>
+            <p>(Amount of products: {{categories.Products?.length}})</p>
+           <button type="button" *ngIf="authentication.roleMatch(['Admin'])" id="closeButton"  class="btn btn-light btn-sm" (click)="onDelete(categories.Id)">&times;</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>

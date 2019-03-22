@@ -1,0 +1,8 @@
+#checkout {
+  padding-left: 10px;
+}
+#totalCost {
+  font-weight: bold;
+  color: red;
+  border: 1px solid white;
+}

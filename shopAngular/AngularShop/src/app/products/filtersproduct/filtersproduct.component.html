@@ -1,0 +1,12 @@
+<div class="row" style="padding-bottom: 40px">
+  <div class="col-12 col-xs-12">
+      <div class="wrapper">
+          <label for="">Ordered by</label>
+          <select (change)='onSelectChange($event)'>
+              <option disabled selected value>  select an option </option>
+            <option *ngFor='let filter of filters' [value]="filter.value" >{{filter.name}}</option>
+          </select>
+          <div class="triangle"></div>
+        </div>
+  </div>
+</div>

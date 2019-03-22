@@ -1,0 +1,15 @@
+
+  .registration-form {
+    font-family: 'Lato', sans-serif;
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    padding:40px;
+    border: 2px solid gray;
+    background-color: white;
+  }
+  @media screen and (max-width: 600px) {
+    .registration-form {
+      border: none;
+    }
+  }

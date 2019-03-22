@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row" style="padding-bottom: 40px;">
+    <h3 class="d-flex" >Checkout form</h3>
+  </div>
+  <div class="row">
+      <div class="col-md-4 order-md-2 mb-4" >
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill"></span>
+          </h4>
+          <ul class="list-group mb-3" *ngFor="let product of checkoutProducts" >
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0"><img src="{{product?.Image}}" style="max-width:50px;max-height:50px"    class="img-responsive"/>  {{product.Name}}</h6>
+              </div>
+              <span class="text-muted">${{product.Price}}</span>
+            </li>
+          </ul>
+          <span style="color:brown"><b>Total cost: {{totalCost}}</b></span>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <form [formGroup]="checkoutForm " (ngSubmit)="createOrder(checkoutForm)" >
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">First name</label>
+                  <input type="text" class="form-control" id="firstName" formControlName="firstName">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Last name</label>
+                  <input type="text" class="form-control" id="lastName"  formControlName="lastName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3" >
+                  <label for="email">Email </label>
+                  <input type="email" class="form-control" id="email" formControlName="email">
+                </div>
+                <div class=" col-md-6 mb-3">
+                  <label for="phoneNumber">Phone number </label>
+                  <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" >
+                </div>
+              </div>
+             <div class="row mb-3" >
+              <div class="col-md-12">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" formControlName="address" >
+              </div>
+             </div>
+             <div class="row">
+              <div class="col-md-12 mb-4">
+              <label for="remarks">Remarks</label>
+              <textarea  type="text" class="form-control" id="remarks" rows="3" formControlName="remarks" ></textarea>
+            </div>
+             </div>
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Submit your order</button>
+            </form>
+          </div>
+  </div>
+</div>

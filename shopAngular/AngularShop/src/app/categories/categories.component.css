@@ -1,0 +1,10 @@
+#divRelative {
+    position: relative;
+    text-align: center;
+    background-color: #C0C0C0;
+}
+#closeButton {
+    position: absolute;
+    bottom: 75px;
+     right: 0px;
+}

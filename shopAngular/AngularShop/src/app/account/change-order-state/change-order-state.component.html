@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<h2 id="title">Change Order state</h2>
+<div  *ngFor="let order of userOrderList">
+  <div class="row" id="orderNavbar">
+    <div class=" col-xs-12 col-sm-6 col-md-3 col-lg-3"   >
+        <strong>Order id:</strong> {{order.orderId}}
+    </div>
+    <div id="dateCreated" class=" col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <strong>Date: </strong>{{order.dateCreated | date: 'dd-MM-yyyy HH:mm'}}
+    </div>
+    <div class=" col-xs-12 col-sm-6 col-md-3 col-lg-3">
+      <select [(ngModel)]="order.orderSelected" (change)="changeOrderState(order.orderSelected, order)">
+        <option value="undefined" disabled selected hidden>Select order state</option>
+        <option  *ngFor='let item of orderState | keys'  [value]="item.key" >{{item.value}}</option>
+    </select>
+    <span id="orderNew" *ngIf="order.orderState == 0; else second"><strong> New </strong> </span>
+    <ng-template #second>
+      <ng-container >
+          <span id="orderInProgress" *ngIf="order.orderState == 1; else third"> <strong>In progress </strong></span>
+      </ng-container>
+  </ng-template>
+  <ng-template #third>
+      <ng-container >
+          <span id="orderCompleted" *ngIf="order.orderState == 2; else third" ><strong> Completed </strong></span>
+      </ng-container>
+  </ng-template>
+    </div>
+    <div class=" col-xs-12 col-sm-3 col-md-3 col-lg-3">
+      Total cost:<strong id="totalCost"> {{order.totalPrice}}$</strong>
+    </div>
+  </div>
+  <div class="row" style="padding-bottom: 20px "   *ngFor="let productOrder of order.OrderIteams">
+    <div class=" col-xs-12 col-sm-4 offset-sm-1 offset-md-1 col-md-4" [routerLink]="['/products-details', productOrder.Product.Id] " ><img src="{{productOrder.Product.Image}}"  id="image" class="img-responsive"/> <strong> {{productOrder.Product.Name}}</strong></div>
+  </div>
+</div>
+

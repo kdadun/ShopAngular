@@ -1,0 +1,121 @@
+<app-navbar></app-navbar>
+<div style="height: 50px"></div>
+<div id="bars" class="d-flex flex-row text-center">
+    <div class="port-item">
+        <div class="card">
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item" (click)="showProfile()">Profile</li>
+              <li class="list-group-item" *ngIf="authentication.roleMatch(['User'])" (click)="showWishList()" >Wishlist </li>
+              <li class="list-group-item"  *ngIf="authentication.roleMatch(['User'])" (click)=" showOrder()">Order</li>
+            </ul>
+          </div>
+    </div>
+    <div class="port-item2 p-4 " >
+      <form class="profile" *ngIf="profile" [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm)">
+          <h2> Your profile</h2>
+          <div style="height: 50px"></div>
+          <div class="row">
+              <div class="col-sm-6">
+                  <h6 style="text-align:left;">Your profile image</h6>
+                <img  src="{{currentImage}}" class=" rounded-circle img-responsive float-left"  style="max-width:200px;max-height:200px">
+                <div class="form-group" id="selectImage" style="padding-top: 20px" >
+                    <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload "></i> Set profile image
+                    </label>
+                    <input id="file-upload" type="file" multiple (change)="uploadImage($event.target.files)" formControlName="image">
+                  </div>
+              </div>
+          </div>
+          <div style="height: 20px"></div>
+          <div class="row">
+            <div class="col-sm-6">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" id="userName" formControlName="username"  >
+            </div>
+            <div class="col-sm-6">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" id="Email" formControlName="email" >
+            </div>
+          </div>
+          <div class="row line-spacing" >
+            <div class="col-sm-6">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" >
+            </div>
+            <div class="col-sm-6">
+                <label for="LastName">Last name</label>
+                <input type="text" class="form-control" id="LastName" formControlName="lastName" >
+            </div>
+          </div>
+          <div class="row line-spacing">
+            <div class="col-sm-6">
+              <label for="Address">Address</label>
+              <input type="text" class="form-control" id="Address" formControlName="address" >
+            </div>
+            <div class="col-sm-6 ">
+              <label for="Telephone">Phone number</label>
+              <input type="text" class="form-control" id="Telephone" formControlName="telephone" >
+            </div>
+          </div>
+          <div class="row" id="updateProfile">
+              <div class="form-group">
+                  <input type="submit"  [disabled]="profileForm.invalid" class="btn btn-success btn-block" value="Update profile">
+                </div>
+          </div>
+        </form>
+    <div class="wishlist" *ngIf="wishlist">
+       <h2>Your wish list</h2>
+       <div class="row" >
+      <div  class=" col-xs-12 col-sm-6 col-md-4 mb-4 " *ngFor="let wishes of wishesList">
+      <div class="card h-100">
+          <div id="cardHeader">
+              <button  id="delete" (click)="deleteWishes(wishes.Id)" class="btn btn-light btn-lg  pull-right"><strong >&times; </strong></button>
+
+          </div>
+          <div class="card-body">
+              <h4 class="card-title" style="text-align: center">{{wishes.Products?.Name}}</h4>
+              <img  class="img-fluid" src="{{wishes.Products?.Image}}">
+          </div>
+       </div>
+    </div>
+  </div>
+
+    </div>
+      <div class="order" *ngIf="order"  >
+        <h2>Your order</h2>
+        <div class="row" >
+         <div class="col-12 col-xs-12 col-sm-12"  *ngFor="let order of userOrderList;">
+            <table id="cart" class="table table-hover"  >
+                <thead id="orderNavbar">
+                <tr>
+                  <th style="width:20%; text-align: left"><strong>Order id: </strong> {{order.orderId}}</th>
+                  <th style="width:30%; text-align: left"><strong>Date: </strong>{{order.dateCreated | date: 'dd-MM-yyyy HH:mm'}}</th>
+
+                  <th id="orderNew" *ngIf="order.orderState == 0; else second"><strong>State: </strong>New</th>
+                  <ng-template #second>
+                      <ng-container >
+                          <th id="orderInProgress" *ngIf="order.orderState == 1; else third" ><strong>State: </strong>In progress</th>
+                      </ng-container>
+                  </ng-template>
+                  <ng-template #third>
+                      <ng-container >
+                          <th id="orderCompleted"  ><strong>State: </strong>Completed</th>
+                      </ng-container>
+                  </ng-template>
+                  <th id="totalCost">Total cost: {{order.totalPrice}}</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let productOrder of order.OrderIteams" style="border: none">
+                <tr>
+                      <div class="col-sm-4" [routerLink]="['/products-details', productOrder.Product.Id] " ><img src="{{productOrder.Product.Image}}" style="max-width:150px;max-height:150px;padding-top:10px;  padding-right:50px "    class="img-responsive"/></div>
+                      <div class="col-sm-8">
+                       <strong> {{productOrder.Product.Name}}</strong>
+                      </div>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

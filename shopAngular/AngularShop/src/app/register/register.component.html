@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<div class="space"></div>
+<div class="row">
+<form class="registration-form needs-validation form-horizontal"  [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)">
+  <div class="row">
+  <div class="col-sm-6">
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="username" placeholder="Username" >
+    <div style="font-size: 11px">
+    <div *ngIf="registrationForm.get('username').pending"> Validating username...</div>
+    <div class="validator-feedback" *ngIf="registrationForm.get('username').touched || registrationForm.get('username').dirty ">
+    <div *ngIf="registrationForm.get('username').hasError('required')">
+      Field is required!
+    </div>
+    <div *ngIf="registrationForm.get('username').getError('minlength') as error">
+       Field has to have at least {{error.requiredLength }} letters
+     </div>
+     <div *ngIf="registrationForm.get('username').status === 'PENDING'">
+      Checking...
+    </div>
+     <div *ngIf="registrationForm.get('username').errors && registrationForm.get('username').errors['userName']">
+      UserNamme is taken!
+    </div>
+   </div>
+   </div>
+  </div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+    <input type="text" class="form-control" formControlName="password" placeholder="Password">
+    <div class="validator-feedback" *ngIf="registrationForm.get('password').touched || registrationForm.get('password').dirty ">
+        <div style="font-size: 10px">
+      <div *ngIf="registrationForm.get('password').hasError('required')">
+        Field is required!
+      </div>
+      <span *ngIf="registrationForm.get('password').getError('password') as error">
+        <div *ngIf="error.lowercase"> - lowercase letters required </div>
+        <div *ngIf="error.uppercase"> - uppercase letters required </div>
+        <div *ngIf="error.number">- numbers required </div>
+        <div *ngIf="error.special">- special characters  required</div>
+      </span>
+      </div>
+      </div>
+  </div>
+</div>
+ </div>
+ <div class="row" style="height:2px;"></div>
+ <div class="row">
+   <div class="col-sm">
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="email" placeholder="E-mail">
+          <div class="validator-feedback" *ngIf="registrationForm.get('email').touched || registrationForm.get('email').dirty ">
+              <div style="font-size: 11px">
+            <div *ngIf="registrationForm.get('email').hasError('required')">
+              Field is required!
+            </div>
+          <div *ngIf="registrationForm.get('email').hasError('email')">
+              E-mail format is incorrect
+            </div>
+            </div>
+            </div>
+         </div>
+   </div>
+ </div>
+ <div class="row" style="height:2px;"></div>
+<div class="row">
+  <div class="col-sm-6">
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="firstName" placeholder="First name">
+         </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+         </div>
+  </div>
+</div>
+<div class="row" style="height:15px;"></div>
+<div class="row">
+  <div class="col-sm-6 offset-3">
+      <div class="form-group">
+          <input type="submit"  [disabled]="registrationForm.invalid" class="btn btn-success btn-block" value="Register">
+        </div>
+  </div>
+</div>
+</form>
+</div>
+

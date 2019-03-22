@@ -1,0 +1,28 @@
+<div class="d-xs-inline">
+  <div class="filters">
+    <h5>Filter by categories</h5>
+    <form >
+        <div class="category-filter filter-wrapper" *ngFor = 'let filter of categoriesList; let i= index;'>
+          <div class="custom-control custom-checkbox">
+              <label class="fake-checkbox">
+                <input type="checkbox" class="custom-control-input" checked (change)='onInputChange($event, filter, "category")'>
+                <span class="custom-control-label">  {{filter.Name}}  </span>
+                <span></span>
+              </label>
+          </div>
+      </div>
+  </form>
+  <h5>Filter by price</h5>
+  <form *ngIf = "showFilters">
+      <div class="custom-filter filter-wrapper" *ngFor = 'let filter of priceFilters'>
+          <div class="custom-control custom-radio">
+            <label class="fake-checkbox">
+              <input type="radio" class="custom-control-input" name="price" [checked]='filter.checked' (change)='onPriceFilterChange($event, filter, "price")'>
+              <span class="custom-control-label">{{filter.name}}</span>
+              <span></span>
+            </label>
+          </div>
+      </div>
+    </form>
+  </div>
+  </div>

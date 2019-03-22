@@ -1,0 +1,47 @@
+
+form .ng-invalid.ng-touched,
+form .ng-invalid.ng-dirty{
+border: 2px solid red !important;
+}
+
+body {
+  font-family: 'poppins','sans-serif';
+  font-size: 16px;
+}
+
+ .validator-feedback {
+ color: red ;
+  }
+  .main-form {
+    font-family: 'Lato', sans-serif;
+    width: 500px;
+    height: 200px;
+    margin: auto;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid gray;
+    background-color: white;
+  }
+
+
+  .buttonSubmit {
+    margin:auto;
+  }
+  .space {
+    margin-top: 20px;
+    margin-bottom:40px;
+  }
+  .space2 {
+    margin-top: 20px;
+    margin-bottom:60px;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  ::placeholder {
+    color: red;
+    opacity: 1;
+  }

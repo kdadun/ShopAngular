@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="space2"></div>
+<div class="container">
+<form class="main-form"  [formGroup]="formLogin" (ngSubmit)="onSubmit(this.formLogin.get('username').value,this.formLogin.get('password').value)" >
+  <div class="row">
+     <div class="col-sm-6 ">
+      <div class="form-group">
+          <input type="text"  class="form-control" formControlName="username" [ngClass]="{'is-invalid':
+          formLogin.get('username').touched && formLogin.get('username').invalid }" placeholder="Username" >
+          <div class="invalid-feedback">Username is required</div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="form-group">
+      <input type="password" class="form-control"  formControlName="password" [ngClass]="{'is-invalid':formLogin.get('password')?.touched && formLogin.get('password').invalid}" placeholder="Password" />
+      <div *ngIf="formLogin.get('password')?.touched && formLogin.get('password').invalid"  class="invalid-feedback">
+        <div *ngIf="!!formLogin.get('password').errors.required">Password is required</div>
+        <div *ngIf="!!formLogin.get('password').errors.minlength">Password  must be a letaset 6 charector</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row" >
+    <div class="col-sm-6 offset-sm-3">
+        <div style="text-align: center; padding-top: 20px;">
+            <button [disabled]="formLogin.invalid" style="width: 200px" class="btn btn-success" type="submit">Submit</button>
+                </div>
+    </div>
+  </div>
+</form>
+<div style="height: 30px;"></div>
+<div class="row " *ngIf="showError">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xs-12 " >
+        <div class="alert alert-dismissible alert-danger" >
+            <button type="button" class="close" (click)="close()" data-dismiss="alert">&times;</button>
+             <strong>Username or password is incorrect</strong>
+          </div>
+    </div>
+  </div>
+</div>

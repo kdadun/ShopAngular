@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="container">
+<div class="row" *ngIf="listCategories.length > 0; else empty">
+    <div class="col-sm-4" style="cursor: pointer;" *ngFor="let categories of listCategories" [routerLink]="['/products-details', categories.Id]" >
+        <h3 id="categoryName"> {{categories.Name }}</h3>
+    <img class="img-fluid" src="{{categories.Image}}" >
+      <p >Price: {{categories.Price}}$</p>
+    </div>
+  </div>
+  <ng-template #empty>
+      <ng-container >
+           <div class="jumbotron">
+              <h4 style="text-align: center">There isn't products in this category</h4>
+           </div>
+
+      </ng-container>
+  </ng-template>
+</div>

@@ -1,0 +1,69 @@
+.port-item {
+  width: 30%;
+  min-width: 0;
+}
+.port-item2 {
+  width: 70%;
+  min-width: 0;
+}
+@media screen and (max-width: 768px) {
+  #bars {
+    flex-direction: column !important;
+  }
+  .port-item {
+    width: 100%;
+  }
+  .port-item2 {
+    width: 100%;
+  }
+}
+.list-group-item {
+  height: 60px !important;
+}
+#submitRow {
+  padding-top: 34px;
+}
+.line-spacing {
+  padding-top: 20px;
+}
+#cardHeader {
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+#delete {
+  color: red; font-size: 30px;
+}
+.img-fluid {
+  margin-bottom: 40px;
+}
+#orderNavbar {
+  background-color: #F0F8FF;
+}
+#orderNew {
+  color: blue;
+  width:30%;
+  text-align:center;
+}
+#orderInProgress {
+  width:30%;
+  text-align:center;
+  color: #2ff1ff;
+}
+#orderCompleted {
+  width:30%;
+  text-align:center;
+  color: green;
+}
+#totalCost {
+  text-align: right;
+  color: red;
+}
+#updateProfile {
+  padding-top: 25px;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  font-size: 20px;
+}

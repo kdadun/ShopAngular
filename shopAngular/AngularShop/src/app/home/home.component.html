@@ -1,0 +1,78 @@
+
+<app-navbar></app-navbar>
+<body>
+  <div class="container">
+    <h3 style="text-align: left">Cheapest product</h3>
+  <div class="row cheapDiv">
+    <div class="col-sm-4 offset-sm-1" [routerLink]="['/products-details', cheapProduct?.Id]">
+        <h4 class="card-title">{{cheapProduct?.Name}}</h4>
+        <img style="height: 250px;"  class="img-fluid" src="{{cheapProduct?.Image}}">
+        <p class="card-text"> {{cheapProduct?.Price}}$</p>
+    </div>
+  </div>
+</div>
+<h2 style="text-align: center; padding-top:60px">New products</h2>
+<div style="height: 30px"></div>
+<div class="container" >
+  <div class="row">
+    <div  class=" col-xs-12 col-sm-6 col-md-4 mb-4 " *ngFor="let product of listNewProducts | paginate: { itemsPerPage: 2, currentPage: page1, id: 'd'  }">
+        <div class="card h-100">
+            <div id="cardHeader">
+                <h2 class="card-title">{{product.Name}}</h2>
+            </div>
+            <div class="card-body" [routerLink]="['/products-details', product.Id]">
+                <img  class="img-fluid" src="{{product.Image}}" style="margin-bottom: 40px;">
+            </div>
+            <div class="card-footer" >
+              <div class="row">
+                  <div class=" col-12 col-sm-12 col-xs-12 col-md-12">
+                      <h3 class="card-text">{{product.Price}}$</h3>
+                  </div>
+                    <div  class="col-sm-6 col-xs-6 col-md-6 col-6 "  *ngIf="app.localStorageItem('userToken') != null">
+                        <a class="buttonCard"  (click)="addProduct(product)" routerLink="/home" ><i  class="fas fa-shopping-cart fa-1x"></i></a>
+                        <a class="heart"   (click)="whishesList(product.Id)"   routerLink="/home"  ><i class="fas fa-heart fa-1x" ></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <nav class="navbar sticky-bottom">
+    <div class="has-text-centered">
+      <pagination-controls  (pageChange)="page1 = $event" id="d"></pagination-controls>
+    </div>
+  </nav>
+</div>
+<h2 style="text-align: center; padding-top:60px">Popular products</h2>
+<div style="height: 30px"></div>
+<div class="container" >
+  <div class="row">
+    <div  class=" col-xs-12 col-sm-6 col-md-4 mb-4 " *ngFor="let product of listPromotionalProduct | paginate: { itemsPerPage: 1, currentPage: page2 }">
+        <div class="card h-100">
+            <div id="cardHeader">
+                <h2 class="card-title">{{product.Name}}</h2>
+            </div>
+            <div class="card-body" [routerLink]="['/products-details', product.Id]">
+                <img  class="img-fluid" src="{{product.Image}}" style="margin-bottom: 40px;">
+            </div>
+            <div class="card-footer" >
+              <div class="row">
+                  <div class=" col-12 col-sm-12 col-xs-12 col-md-12">
+                      <h3 class="card-text">{{product.Price}}$</h3>
+                  </div>
+                    <div  class="col-sm-6 col-xs-6 col-md-6 col-6 "  *ngIf="app.localStorageItem('userToken') != null">
+                        <a class="buttonCard"  (click)="addProduct(product)" routerLink="/home" ><i  class="fas fa-shopping-cart fa-1x"></i></a>
+                        <a class="heart"   (click)="whishesList(product.Id)"   routerLink="/home"  ><i class="fas fa-heart fa-1x" ></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <nav class="navbar sticky-bottom">
+    <div class="has-text-centered">
+      <pagination-controls (pageChange)="page2 = $event"></pagination-controls>
+    </div>
+  </nav>
+</div>
+</body>

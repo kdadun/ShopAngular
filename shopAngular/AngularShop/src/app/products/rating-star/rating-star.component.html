@@ -1,0 +1,37 @@
+<form #commentForm = "ngForm" (ngSubmit)="addComment()" style="padding-bottom: 30px">
+<div class="row" >
+    <div class="col-sm-6">
+        <ul class="list-inline rating-list"
+            *ngFor="let x of seleectedStars" style="display: inline-block" >
+              <li (click)="rateProduct(x)"
+                  [ngClass]="{'selected': (x <= selectedValue)}">
+                <i class="fa fa-star fa-lg"></i>
+              </li>
+        </ul>
+    </div>
+    <div  class="col-sm-6" >
+        <strong>Your rating: {{selectedValue}}</strong>
+    </div>
+    <div class=" col-xs-12 col-sm-12" style="padding-bottom: 30px">
+        <textarea  [(ngModel)]="comment" class="form-control" name="comment" placeholder="write a comment..." rows="3" required></textarea>
+    </div>
+    <div class="col-xs-12 col-sm-12 ">
+      <button [disabled]="!commentForm.form.valid" class="btn btn-info pull-right">Post</button>
+    </div>
+  </div>
+</form>
+<div *ngFor="let comment of commentList">
+    <div class="col-xs-12 col-sm-12" style="padding-top:15px">
+         <strong> User: {{comment.Username}}</strong>
+      <ul class="list-inline ratingList" style="display:inline; " *ngFor="let x of comment.stars">
+          <li >
+            <i value="x" style="display:inline" class="fa fa-star fa-lg"></i>
+        </li>
+      </ul>
+    </div>
+<div class="row"  style="background-color:		#008080;  border-radius: 8px;padding:15px" >
+    <div class="col-sm-12" id="comment">
+        <strong > {{comment.Comment}} </strong>
+    </div>
+</div>
+</div>

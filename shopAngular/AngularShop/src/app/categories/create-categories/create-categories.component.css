@@ -1,0 +1,7 @@
+#categoriesForm {
+    border: 2px solid black;
+    padding: 30px;
+}
+#createCategoriesButton {
+    padding-bottom: 10px;
+}

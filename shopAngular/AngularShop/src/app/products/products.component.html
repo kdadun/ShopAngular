@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+  <div class="d-flex" id="wrapper">
+    <div class="col-xs-12">
+    <div  *ngIf="wrapper"  id="sidebar-wrapper">
+      <div class="sidebar-heading">Sorting sidebar</div>
+      <app-sorting-navbar  #filtersComponent (onPriceFilter)='onPriceFilter($event)'  (onFilterChange)='onFilterChange($event)'  [priceFilters]='priceFilters' ></app-sorting-navbar>
+    </div>
+  </div>
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+          <button class="btn btn-info" id="menu-toggle" (click)="showHide()" >Sidebar - show/hide</button><br/>
+          <app-filtersproduct [filters]='sortFilters'  (onSortChange)='sortProducts($event)'></app-filtersproduct>
+          <div class="row row-eq-height">
+              <div class="col-12 col-xs-6 col-sm-4 col-md-4  h-100   d-inline-block " *ngFor="let product of products" [routerLink]="['/products-details', product?.Id]" >
+                <h3 style="text-align: center; padding-bottom: 5px">{{product?.Name}}</h3>
+                <img class="img-responsive"  style="max-width:150px;max-height:150px" src="{{product?.Image}}">
+                <p style="color: red">Price: {{product?.Price}}$</p>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>

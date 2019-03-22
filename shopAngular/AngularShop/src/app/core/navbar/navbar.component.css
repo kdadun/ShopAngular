@@ -1,0 +1,14 @@
+.navbar {
+  min-height: 65px;
+  border: 1px solid #f2f4f8;
+  font-size: 18px;
+  color: #787878;
+  padding: 0;
+}
+.navbar-brand
+{
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  margin: 0px;
+  padding-right: 5px;
+}

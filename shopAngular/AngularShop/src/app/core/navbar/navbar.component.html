@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" routerLink='/home' routerLinkActive="active">Sklep internetowy</a>
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item "><a routerLink='/register' routerLinkActive="active" class="nav-link" *ngIf="app.localStorageItem('userToken') == null" >Registration</a></li>
+      <li class="nav-item "><a routerLink='/login'routerLinkActive="active" class="nav-link" *ngIf="app.localStorageItem('userToken') == null">Login</a></li>
+      <li class="nav-item"><a routerLink='/categories' routerLinkActive="active" class="nav-link" >Categories</a></li>
+      <li class="nav-item"><a routerLink='/products' routerLinkActive="active" class="nav-link">Products</a></li>
+      <li class="nav-item"><a routerLink='/cart' routerLinkActive="active" class="nav-link"  *ngIf="cartService.cartCount != 0 "><i class="fas fa-shopping-cart"> {{cartService.cartCount}}</i></a></li>
+      <!--<li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" routerLink='/categories' routerLinkActive="active" >Categories</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  routerLink='/products' routerLinkActive="active">Products</a>
+        </div>
+      </li>-->
+     <!-- <li class="nav-item "><a routerLink='/cart' routerLinkActive="active" class="nav-link" *ngIf="app.localStorageItem('userToken') != null">Cart {{cartService.cartCount}}</a> </li>-->
+      <li class="nav-item dropdown" *ngIf="authentication.roleMatch(['Admin'])">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin panel
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" routerLink='/create-categories' routerLinkActive="active" >Create categories</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  routerLink='/create-products' routerLinkActive="active">Create product</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  routerLink='/change-order' routerLinkActive="active">Change order state</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-right" *ngIf="app.localStorageItem('userToken') != null" >
+        <li class="nav-item"><a class="nav-link" routerLink='/account' >My account</a></li>
+        <li class="nav-item"><a class="nav-link" (click)="Logout()">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div style="padding-top: 75px"></div>
+

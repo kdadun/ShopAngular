@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<body>
+<div class="row" style="padding-top: 50px; padding-left:10px">
+  <div class=" col-md-6 col-sm-6 " style="border-right: 1px solid #e5e5e5; ">
+      <h3 style="text-align: center">{{product.Name}}</h3>
+      <img class="img-fluid" src="{{product.Image}}">
+  </div>
+    <div class="  col-md-4 col-sm-6 col-xs-12 col-12" style="padding-top:10px; padding-right: 15px" >
+        <p>{{product.Description}}</p>
+        <strong style="color: red">Prize: {{product.Price}}$</strong>
+        <div style="padding-bottom:30px "   *ngIf="app.localStorageItem('userToken') != null">
+        <a  href="#"(click)="addProduct(product)" routerLink="/products" ><i class="fas fa-cart-plus"></i> Add to cart</a>
+      </div>
+       <app-rating-star [products]="product"> </app-rating-star>
+    </div>
+
+  </div>
+</body>

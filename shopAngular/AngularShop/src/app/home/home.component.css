@@ -1,0 +1,37 @@
+.cheapDiv {
+  border-bottom: 1px solid #e5e5e5;
+  padding-top:20px;
+  padding-bottom: 20px;
+}
+.card {
+  padding: 20px;
+  margin: 20px;
+  width:100%;
+    margin:0;
+}
+#cardHeader {
+  padding-bottom: 10px;
+}
+.card-title {
+  text-align: center;
+}
+.card-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.buttonCard {
+  color: black;
+
+}
+.buttonCard:hover {
+  color: orange;
+}
+.heart {
+  color: black;
+}
+.heart:hover {
+  color: red;
+}
+
