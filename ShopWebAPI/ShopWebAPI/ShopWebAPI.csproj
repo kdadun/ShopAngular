@@ -207,7 +207,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +298,8 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ShopAngular.mdf" />
+    <Content Include="App_Data\ShopAngular_log.ldf" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
