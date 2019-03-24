@@ -31,7 +31,7 @@
 <p>Admin account:</p>
 <strong>username: admin  </strong>
 <strong>password: Admin1 </strong>
-<p>User account </p>
+<p>User account: </p>
 <strong>username: qaz  </strong>
 <strong>password: Qa1 </strong>
 <h1>License </h1>
