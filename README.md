@@ -24,8 +24,6 @@
 <code>cd shopAngular/AngularShop </code>
 
 <code>npm install </code>
-<p>Install ngx-pagination</p>
-<code> npm install ngx-pagination --save </code>
 <br/>
 <p>Start the application</p>
 <code> ng serve --open </code>
